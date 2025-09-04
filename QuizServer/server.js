@@ -72,6 +72,10 @@ const server = http.createServer(async (req, res) => {
   const path = parsedURL.pathname;
   const method = req.method;
 
+  if (path === '/health' && method === 'GET') {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ status: "ok" }));
+  }
   if (path === '/debug' && method === 'GET') {
     try {
       const questions = await Questions("Give me quiz on circles", "circles");
@@ -103,6 +107,6 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
+server.listen(PORT,"0.0.0.0" () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
