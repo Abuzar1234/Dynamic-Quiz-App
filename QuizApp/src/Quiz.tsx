@@ -30,7 +30,7 @@ function Quiz() {
       try {
         setLoading(true);
         // Fixed: Changed port from 5000 to 3000 to match your server
-        const res = await fetch("http://localhost:3000/quiz", {
+        const res = await fetch("https://dynamic-quiz-app.onrender.com/quiz", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
